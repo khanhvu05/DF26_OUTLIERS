@@ -1,0 +1,2 @@
+resolution,target,model_type,lookback,horizon,features,total_params,trained_epochs,batch_size,units1,units2,dropout,lr
+1min,request_count,LSTM,30,1,"['request_count', 'weighted_load', 'total_bytes']",31051,44,16,50,50,0.2,0.001
