@@ -1,0 +1,2 @@
+resolution,target,window,lstm_units,epochs_trained,residual_mape_test
+5min,request_count,10,50,17,218.91302727291512

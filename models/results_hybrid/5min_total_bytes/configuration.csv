@@ -1,0 +1,2 @@
+resolution,target,window,lstm_units,epochs_trained,residual_mape_test
+5min,total_bytes,10,50,20,290.50862773388167

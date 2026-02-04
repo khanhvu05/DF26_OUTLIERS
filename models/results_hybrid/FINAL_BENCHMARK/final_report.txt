@@ -1,0 +1,152 @@
+
+================================================================================
+HYBRID PROPHET + LSTM: COMPREHENSIVE BENCHMARK REPORT
+================================================================================
+
+Generated: 2026-02-02 02:41:45
+Total Pipeline Time: 4.9 minutes
+
+================================================================================
+HYBRID ARCHITECTURE
+================================================================================
+
+The hybrid model combines two complementary approaches:
+
+1. Prophet Component:
+   - Captures long-term trends
+   - Models daily/weekly seasonality
+   - Handles holidays and special events
+   - Provides interpretable forecasts
+
+2. LSTM Component:
+   - Learns from Prophet's residuals
+   - Captures short-term patterns
+   - Corrects systematic errors
+   - Improves accuracy
+
+3. Final Forecast:
+   Hybrid = Prophet_Forecast + LSTM_Residual_Correction
+
+================================================================================
+CONFIGURATIONS TESTED
+================================================================================
+
+Resolutions: 5min, 15min
+Target Variables: request_count, total_bytes
+
+Total Configurations: 4
+Successful: 4
+Failed: 0
+
+================================================================================
+OVERALL PERFORMANCE
+================================================================================
+
+Average Metrics (Hybrid):
+  MAE:  528340.66 (±697809.60)
+  RMSE: 705398.73 (±928686.29)
+  MAPE: 23.78% (±5.77%)
+  R²:   0.8127 (±0.0766)
+
+Average Improvement:
+  vs Prophet: +41.3%
+  vs LSTM:    +56.3%
+
+================================================================================
+BEST OVERALL CONFIGURATION
+================================================================================
+
+Resolution: 5min
+Target: request_count
+
+Performance:
+  Hybrid MAE:  36.30
+  Hybrid RMSE: 49.18
+  Hybrid MAPE: 27.73%
+  Hybrid R²:   0.8386
+
+Improvements:
+  vs Prophet: +39.8%
+  vs LSTM:    +57.2%
+
+
+================================================================================
+PERFORMANCE BY RESOLUTION
+================================================================================
+
+
+5min:
+  Hybrid MAE:  320814.32
+  Hybrid RMSE: 432093.38
+  Avg Improvement: +44.0% (vs avg of Prophet & LSTM)
+
+15min:
+  Hybrid MAE:  735867.00
+  Hybrid RMSE: 978704.08
+  Avg Improvement: +49.4% (vs avg of Prophet & LSTM)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. Hybrid Advantage:
+   - Hybrid outperforms individual models in 4/4 cases
+   - Average improvement: 485288.61 MAE points
+
+2. Best Resolution:
+   - 5min achieves lowest MAE
+   - Average MAE: 320814.32
+
+4. Model Complementarity:
+   - Prophet captures seasonal patterns
+   - LSTM corrects residual errors
+   - Combined approach yields +41.3% improvement
+
+================================================================================
+RECOMMENDATIONS FOR AUTOSCALING
+================================================================================
+
+1. Primary Recommendation:
+   - Use 5min resolution for request_count
+   - Deploy Hybrid model (MAE: 36.30)
+   - Expected accuracy: 72.3%
+
+2. Scaling Strategy:
+   - Use hybrid forecast as baseline
+   - Add safety buffer: forecast + 2σ
+   - σ ≈ 528341 (average MAE)
+   - Safety margin: ~1056681 units
+
+4. Retraining Schedule:
+   - Retrain Prophet weekly (trend + seasonality)
+   - Retrain LSTM daily (recent patterns)
+   - Full retrain if MAE increases >20%
+   - Monitor residual patterns continuously
+
+5. Production Deployment:
+   - Prophet: Load forecast and parameters
+   - LSTM: Load model.keras and scaler.pkl
+   - Combine predictions: prophet + lstm_residual
+   - Run anomaly detection in parallel
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+Benchmark Files:
+  • comprehensive_comparison.csv - All metrics for all configurations
+  • benchmark_visualizations.png - Visual comparison
+  • final_report.txt - This report
+
+Individual Configuration Results:
+  • prophet_model/forecast.csv - Prophet forecasts
+  • lstm_model.keras - LSTM residual model
+  • scaler.pkl - Residual scaler
+  • hybrid_predictions.csv - All three model predictions
+  • anomalies.csv - Detected anomalies
+  • metrics_comparison.csv - Prophet vs LSTM vs Hybrid
+  • configuration.csv - Model parameters
+
+================================================================================
+END OF REPORT
+================================================================================
