@@ -1,4 +1,4 @@
-# ⚡ PLANORA: Risk-Aware Autoscaling System
+# ⚡ OUTLIERS: Risk-Aware Autoscaling System
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
@@ -539,3 +539,4 @@ MIT License - Free for educational and research purposes
 **🚀 Ready for Demo & Defense!**
 
 For questions or issues, check `DEFENSE_QNA.md` or contact the development team.
+
