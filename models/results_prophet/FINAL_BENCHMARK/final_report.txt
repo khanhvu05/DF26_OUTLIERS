@@ -1,0 +1,159 @@
+
+================================================================================
+PROPHET: COMPREHENSIVE BENCHMARK REPORT
+================================================================================
+
+Generated: 2026-02-03 03:00:56
+Total Pipeline Time: 16.0 minutes
+
+================================================================================
+CONFIGURATIONS TESTED
+================================================================================
+
+Resolutions: 1min, 5min, 15min
+Target Variables: request_count, total_bytes
+
+Total Configurations: 6
+Successful: 6
+Failed: 0
+
+Hyperparameter Search Space:
+  changepoint_prior_scale: [1, 5]
+  seasonality_prior_scale: [10, 30]
+  seasonality_mode: ['multiplicative']
+
+================================================================================
+OVERALL PERFORMANCE
+================================================================================
+
+Average Metrics:
+  MAE:  658954.42 (±1082931.42)
+  RMSE: 2591572307305.31 (±5455753818862.96)
+  RMSE: 897160.79 (±1464243.76)
+  MAPE: 55.32% (±35.54%)
+  R²:   0.3566 (±0.1192)
+  Interval Coverage: 97.9% (±0.3%)
+  Avg Training Time: 159.6s
+
+================================================================================
+BEST OVERALL CONFIGURATION
+================================================================================
+
+Resolution: 1min
+Target: request_count
+
+Performance:
+  MAE:  15.91
+  MSE: 468.75
+  RMSE: 21.65
+  MAPE: 61.38%
+  R²:   0.3562
+  Interval Coverage: 97.7%
+
+Best Hyperparameters:
+  changepoint_prior_scale: 5
+  seasonality_prior_scale: 10
+  seasonality_mode: multiplicative
+
+================================================================================
+PERFORMANCE BY RESOLUTION
+================================================================================
+
+
+1min:
+  Average MAE:  129520.60
+  Average MAPE: 93.14%
+  Average R²:   0.2672
+  Best config: request_count (MAE: 15.91)
+
+5min:
+  Average MAE:  479580.64
+  Average MAPE: 37.55%
+  Average R²:   0.4061
+  Best config: request_count (MAE: 59.52)
+
+15min:
+  Average MAE:  1367762.02
+  Average MAPE: 35.29%
+  Average R²:   0.3965
+  Best config: request_count (MAE: 189.04)
+
+================================================================================
+PERFORMANCE BY TARGET
+================================================================================
+
+
+request_count:
+  Average MAE:  88.16
+  Average MSE:  24949.43
+  Average MAPE: 44.00%
+  Average R²:   0.4442
+  Best config: 1min (MAE: 15.91)
+
+total_bytes:
+  Average MAE:  1317820.68
+  Average MSE:  5183144589661.19
+  Average MAPE: 66.64%
+  Average R²:   0.2690
+  Best config: 1min (MAE: 259025.29)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. Best Resolution:
+   - 1min has lowest average MAE (129520.60)
+
+2. Best Target:
+   - request_count is easier to predict (MAE: 88.16)
+
+3. Interval Coverage:
+   - Average: 97.9%
+   - Good
+
+4. Most Common Best Parameters:
+   - changepoint_prior_scale: 1
+   - seasonality_prior_scale: 10
+   - seasonality_mode: multiplicative
+
+================================================================================
+RECOMMENDATIONS FOR AUTOSCALING
+================================================================================
+
+1. Use 1min resolution for request_count
+   - Achieves best accuracy (MAE: 15.91)
+   - 95% confidence intervals cover 97.7% of actuals
+
+2. Safety Margins:
+   - Use upper bound of prediction interval for conservative scaling
+   - Or use forecast + 2σ where σ is residual std deviation
+
+3. Retraining Strategy:
+   - Retrain weekly to capture evolving patterns
+   - Monitor forecast accuracy continuously
+   - Retrain immediately if MAE increases by >20%
+
+4. Production Deployment:
+   - Load best model parameters from best_parameters.csv
+   - Use same holiday definitions and regressors
+   - Validate predictions before scaling actions
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+Benchmark Files:
+  • comprehensive_comparison.csv - All metrics for all configurations
+  • benchmark_visualizations.png - Visual comparison
+  • final_report.txt - This report
+
+Individual Configuration Results (for each resolution×target):
+  • predictions.csv - Test predictions with confidence intervals
+  • metrics.csv - Performance metrics
+  • best_parameters.csv - Optimal hyperparameters
+  • hyperparameter_tuning.csv - Full tuning results
+  • forecast_full.csv - Complete forecast with components
+
+================================================================================
+END OF REPORT
+================================================================================

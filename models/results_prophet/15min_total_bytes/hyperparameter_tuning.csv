@@ -1,0 +1,5 @@
+changepoint_prior_scale,seasonality_prior_scale,seasonality_mode,mae
+1,10,multiplicative,3436480.529971479
+1,30,multiplicative,3448297.5294382195
+5,10,multiplicative,3549469.492880598
+5,30,multiplicative,3530105.9967575385

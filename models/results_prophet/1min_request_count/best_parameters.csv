@@ -1,0 +1,2 @@
+changepoint_prior_scale,seasonality_prior_scale,seasonality_mode,daily_seasonality,weekly_seasonality,yearly_seasonality,interval_coverage
+5,10,multiplicative,True,True,False,97.67746913580247
